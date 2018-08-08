@@ -10,7 +10,7 @@ contador = 0
 (dx, dy) = (0,0)
 direccion = ""
 
-#enviar = serial.Serial('COM3', 115200, None)
+enviar = serial.Serial('COM3', 115200, None)
 
 while True:
 
@@ -51,14 +51,14 @@ while True:
 
                 if cx > 200:
                     dirX = "Izquierda"
-                    #enviar.write('a')
+                    enviar.write('a')
                 if cx < 150:
                     dirX = "Derecha"
-                    #enviar.write('b')
+                    enviar.write('b')
 
                 if cy < 170:
                     dirY = "Arriba"
-                    #enviar.write('c')
+                    enviar.write('c')
 
                 if dirX != "" and dirY != "":
                     direccion = "{}-{}".format(dirY,dirX)
