@@ -1,13 +1,12 @@
 import numpy as np
 import cv2
-from collections import deque
 import serial
+import time
 
 camara = cv2.VideoCapture(0)
 cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
 
 contador = 0
-(dx, dy) = (0,0)
 direccion = ""
 
 enviar = serial.Serial('COM3', 115200, None)
@@ -20,6 +19,15 @@ while True:
     copia = cuadro.copy()
     
     deteccion = cascade.detectMultiScale(borr, 1.3, 20)
+    
+    try:
+        deteccion.any()
+        t1 = time.time()
+    except AttributeError:           
+            t2 = time.time() - t1
+
+            if t2 > 3:
+                enviar.write('d')
 
     for (x,y,w,h) in deteccion:
         cv2.rectangle(copia, (x,y), ((x+w), (y+h)), (0,255,0), 1)
