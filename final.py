@@ -5,10 +5,8 @@ import time
 
 camara = cv2.VideoCapture(0)
 cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
-
 contador = 0
 direccion = ""
-
 enviar = serial.Serial('COM3', 115200, None)
 
 while True:
