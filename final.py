@@ -47,11 +47,10 @@ while True:
             c = max(cont, key=cv2.contourArea)
             ((x,y),r) = cv2.minEnclosingCircle(c)
             centro = cv2.moments(c)
-            ctr = (int(centro['m10']/centro['m00']), int(centro['m01']/centro['m00']))
             cx = int(centro['m10']/centro['m00'])
             cy = int(centro['m01']/centro['m00'])
             if r >26:
-                cv2.circle(salida, ctr, 10, (255,255,255), -1)
+                cv2.circle(salida, (cx,cy), 10, (255,255,255), -1)
 
                 (dirX, dirY) = ("", "")
 
