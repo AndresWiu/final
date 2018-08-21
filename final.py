@@ -5,7 +5,7 @@ import time
 
 camara = cv2.VideoCapture(0)
 cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
-contador = 0
+
 direccion = ""
 enviar = serial.Serial('COM3', 115200, None)
 
@@ -75,7 +75,7 @@ while True:
         
     cv2.imshow('prubea 3', salida)
     key = cv2.waitKey(1) & 0xFF
-    contador += 1
+    
     
     if key == ord("q"):
         break
